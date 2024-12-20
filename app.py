@@ -10,14 +10,16 @@ client = OpenAI(
 )
 
 # Streamlit 인터페이스 설정
-st.title("한글 문장 점검기 (OpenAI API 활용)")
+st.title("종합일람표 점검기 (OpenAI API 활용)")
 
 # 사용자 입력: 학기 날짜 설정
-st.sidebar.markdown("### 학기 기간 설정")
-s1_start = st.sidebar.date_input("1학기 시작일", value=datetime(2024, 3, 1))
-s1_end = st.sidebar.date_input("1학기 종료일", value=datetime(2024, 8, 15))
-s2_start = st.sidebar.date_input("2학기 시작일", value=datetime(2024, 8, 16))
-s2_end = st.sidebar.date_input("2학기 종료일", value=datetime(2025, 2, 28))
+st.sidebar.markdown("### 학기 기준 설정")
+st.sidebar.write("1학기")
+s1_start = st.sidebar.date_input("시작일", value=datetime(2024, 3, 1))
+s1_end = st.sidebar.date_input("종료일", value=datetime(2024, 8, 15))
+st.sidebar.write("2학기")
+s2_start = st.sidebar.date_input("시작일", value=datetime(2024, 8, 16))
+s2_end = st.sidebar.date_input("종료일", value=datetime(2025, 2, 28))
 
 # 문장 점검 함수 정의 (OpenAI API 활용)
 def check_sentence_with_openai(sentence):
@@ -48,7 +50,7 @@ def check_sentence_with_openai(sentence):
 
 
 # 문장 입력
-sentence = st.text_area("문장을 입력하세요", placeholder="여기에 문장을 입력하거나 붙여넣으세요.")
+sentence = st.text_area("문장을 입력하세요", placeholder="여기에 문장을 입력하거나 붙여넣으세요.", height=400)
 
 # 버튼 추가: '문장 점검' 버튼을 클릭하면 OpenAI 함수 실행
 if st.button('문장 점검'):
