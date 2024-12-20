@@ -50,7 +50,7 @@ def check_sentence_with_openai(sentence):
 
 
 # 문장 입력
-sentence = st.text_area("문장을 입력하세요", placeholder="여기에 문장을 입력하거나 붙여넣으세요.", height=400)
+sentence = st.text_area("문장을 입력하세요", placeholder="여기에 문장을 입력하거나 붙여넣으세요.", height=220)
 
 # 버튼 추가: '문장 점검' 버튼을 클릭하면 OpenAI 함수 실행
 if st.button('문장 점검'):
