@@ -13,11 +13,13 @@ client = OpenAI(
 st.title("종합일람표 점검기 (OpenAI API 활용)")
 
 # 사용자 입력: 학기 날짜 설정
-st.sidebar.markdown("### 학기 기준 설정")
-st.sidebar.write("1학기")
+st.sidebar.markdown("# 학기 기준 설정")
+st.sidebar.markdown("<br>", unsafe_allow_html=True)
+st.sidebar.markdown("## 1학기")
 s1_start = st.sidebar.date_input("시작일", value=datetime(2024, 3, 1))
 s1_end = st.sidebar.date_input("종료일", value=datetime(2024, 8, 15))
-st.sidebar.write("2학기")
+st.sidebar.markdown("<hr>", unsafe_allow_html=True)
+st.sidebar.markdown("## 2학기")
 s2_start = st.sidebar.date_input("시작일", value=datetime(2024, 8, 16))
 s2_end = st.sidebar.date_input("종료일", value=datetime(2025, 2, 28))
 
