@@ -14,6 +14,7 @@ st.title("종합일람표 점검기 (by.말랑한거봉)")
 
 # 사용자 입력: 학기 날짜 설정
 st.sidebar.markdown("# 학기 기준 설정")
+st.sidebar.write("*[창체-자율]의 회장/부회장 임기 기준")
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
 st.sidebar.markdown("## 1학기")
 s1_start = st.sidebar.date_input("시작일", value=datetime(2024, 3, 1))
