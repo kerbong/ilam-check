@@ -10,7 +10,7 @@ client = OpenAI(
 )
 
 # Streamlit 인터페이스 설정
-st.title("종합일람표 점검기 (OpenAI API 활용)")
+st.title("종합일람표 점검기 (by.말랑한거봉)")
 
 # 사용자 입력: 학기 날짜 설정
 st.sidebar.markdown("# 학기 기준 설정")
@@ -96,3 +96,7 @@ if st.button('문장 점검'):
                 """)
             else:
                 st.write("문장을 수정할 필요가 없습니다!")
+
+st.markdown("## 후원하기")
+st.markdown("### 도움이 되셨다면 후원 부탁드립니다!")
+st.image("donation.jpg", use_column_width=True)
