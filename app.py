@@ -96,7 +96,7 @@ if st.button('문장 점검'):
                 """)
             else:
                 st.write("문장을 수정할 필요가 없습니다!")
-
+st.markdown("<br><br><br><br>", unsafe_allow_html=True)
 st.markdown("## 후원하기")
-st.markdown("### 도움이 되셨다면 후원 부탁드립니다!")
+st.write("도움이 되셨다면 후원 감사히 받겠습니다.")
 st.image("donation.jpg", width=200)
