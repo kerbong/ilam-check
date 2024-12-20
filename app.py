@@ -99,4 +99,4 @@ if st.button('문장 점검'):
 
 st.markdown("## 후원하기")
 st.markdown("### 도움이 되셨다면 후원 부탁드립니다!")
-st.image("donation.jpg", use_column_width=True)
+st.image("donation.jpg", width=200)
