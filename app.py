@@ -9,6 +9,16 @@ client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
 )
 
+# Streamlit 인터페이스 설정
+st.title("한글 문장 점검기 (OpenAI API 활용)")
+
+# 사용자 입력: 학기 날짜 설정
+st.sidebar.markdown("### 학기 기간 설정")
+s1_start = st.sidebar.date_input("1학기 시작일", value=datetime(2024, 3, 1))
+s1_end = st.sidebar.date_input("1학기 종료일", value=datetime(2024, 8, 15))
+s2_start = st.sidebar.date_input("2학기 시작일", value=datetime(2024, 8, 16))
+s2_end = st.sidebar.date_input("2학기 종료일", value=datetime(2025, 2, 28))
+
 # 문장 점검 함수 정의 (OpenAI API 활용)
 def check_sentence_with_openai(sentence):
     try:
@@ -24,8 +34,8 @@ def check_sentence_with_openai(sentence):
                     "5.부정적인 문장 미래가능성으로 바꾸기\n"
                     "6.금지 단어 사용 여부 확인(예: kg -> 킬로그램, AI -> 인공지능)\n"
                     "7.사용 가능한 단어 (예:외국인 성명, 도서명, 일반화된 명사 등)\n"
-                    "8.가장 끝 문장 마침표 후에 띄어쓰기 없게\n"
-                    "Additionally, ensure that any mentioned periods match the given semester dates.\n"
+                    "8.반장, 부반장이나 회장, 부회장이 문장에 있으면 1학기:{s1_start}~{s1_end}, 2학기:{s2_start}~{s2_end}와 일치하는지 확인\n"
+                    "9.가장 끝 문장 마침표 후에 띄어쓰기 없게\n"
                 )},
                 {"role": "user", "content": f"다음 문장을 점검하고 수정된 결과물만 보여줘: {sentence}"}
             ]
@@ -36,27 +46,6 @@ def check_sentence_with_openai(sentence):
     except Exception as e:
         return f"오류가 발생했습니다: {str(e)}"
 
-# 날짜 형식 확인 함수
-def is_date_within_period(sentence, start_date, end_date):
-    try:
-        # 문장에서 날짜 추출 (예: 2024.03.01.-2024.08.15.)
-        period = sentence.split("(")[1].split(")")[0]
-        period_start, period_end = period.split("-")
-        period_start = datetime.strptime(period_start.strip(), "%Y.%m.%d.")
-        period_end = datetime.strptime(period_end.strip(), "%Y.%m.%d.")
-        return start_date <= period_start <= end_date and start_date <= period_end <= end_date
-    except:
-        return False
-
-# Streamlit 인터페이스 설정
-st.title("한글 문장 점검기 (OpenAI API 활용)")
-
-# 사용자 입력: 학기 날짜 설정
-st.sidebar.markdown("### 학기 기간 설정")
-semester1_start = st.sidebar.date_input("1학기 시작일", value=datetime(2024, 3, 1))
-semester1_end = st.sidebar.date_input("1학기 종료일", value=datetime(2024, 8, 15))
-semester2_start = st.sidebar.date_input("2학기 시작일", value=datetime(2024, 8, 16))
-semester2_end = st.sidebar.date_input("2학기 종료일", value=datetime(2025, 2, 28))
 
 # 문장 입력
 sentence = st.text_area("문장을 입력하세요", placeholder="여기에 문장을 입력하거나 붙여넣으세요.")
