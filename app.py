@@ -98,26 +98,33 @@ if st.button('문장 점검'):
             else:
                 st.write("문장을 수정할 필요가 없습니다!")
                 
-st.markdown("## 사용방법")  # h3 태그로 제목 추가
 
-# 내용 리스트
-instructions = [
-    "오탈자 확인",
-    "부정적인 문장은 미래 가능성으로 바꿈",
-    "띄어쓰기가 없거나 두 칸 띄어 쓴 곳 확인",
-    "가장 끝 문장 마침표 뒤에 띄어쓰기가 없는지 확인"
-    "문장이 어색한 경우(예: '~고' '~고'의 반복) 확인",
-    "금지 단어 사용 여부 확인(예: 'kg' -> '킬로그램', 'AI' -> '인공지능')",
-    "문장 끝에 '~할 수 있음.' 같은 표현을 없애고, 명사형 어미 '~함.', '~임.', '~음.'으로 끝냄",
-    "반장, 부반장, 회장, 부회장이 문장에 있으면 왼쪽 사이드바에 입력한 기간과 일치하는지 확인",
-]
 
-st.markdown("점검하는 내용은 다음과 같습니다.")
-# 리스트 표시
-for idx, instruction in enumerate(instructions, 1):
-    st.markdown(f"{idx}. {instruction}")
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+st.subheader("사용방법")
+st.markdown(
+    """
+    1. 오탈자 확인<br>
+    2. 부정적인 문장은 미래 가능성으로 바꿈<br>
+    3. 띄어쓰기가 없거나 두 칸 띄어 쓴 곳 확인<br>
+    4. 가장 끝 문장 마침표 뒤에 띄어쓰기가 없는지 확인<br>
+    5. 문장이 어색한 경우(예: '~고' '~고'의 반복) 확인<br>
+    6. 금지 단어 사용 여부 확인(예: 'kg' -> '킬로그램', 'AI' -> '인공지능')<br>
+    7. 문장 끝에 '~할 수 있음.' 같은 표현을 없애고, 명사형 어미 '~함.', '~임.', '~음.'으로 끝냄<br>
+    8. '반장', '부반장', '회장', '부회장'이 포함된 문장은 왼쪽 사이드 바 학기 기간과 일치하는지 확인<br>
+       - 1학기: {se1_start} ~ {se1_end}<br>
+       - 2학기: {se2_start} ~ {se2_end}<br>
+    """.format(
+        se1_start=s1_start.strftime("%Y.%m.%d"),
+        se1_end=s1_end.strftime("%Y.%m.%d"),
+        se2_start=s2_start.strftime("%Y.%m.%d"),
+        se2_end=s2_end.strftime("%Y.%m.%d"),
+    ),
+    unsafe_allow_html=True,
+)
                 
-st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("## 후원하기")
 st.write("도움이 되셨다면 후원 감사히 받겠습니다.")
 st.image("donation.jpg", width=200)
