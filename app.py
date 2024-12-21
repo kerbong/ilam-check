@@ -130,6 +130,6 @@ st.markdown(
                 
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("## 후원하기")
-st.markdown("### by.말랑한 거봉")
-st.write("도움이 되셨다면 후원 감사히 받겠습니다.")
+st.write("문제가 발생하셨다면 kerbong@gmail.com으로 알려주세요!🙏🏼")
+st.write("도움이 되셨다면 후원 감사히 받겠습니다☕(by.말랑한 거봉)")
 st.image("donation.jpg", width=200)
