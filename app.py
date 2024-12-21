@@ -10,8 +10,8 @@ client = OpenAI(
 )
 
 # Streamlit 인터페이스 설정
-st.title("종합일람표 점검기 (by.말랑한거봉)")
-
+st.title("종합일람표 점검기")
+st.markdown("### with.GPT")
 # 사용자 입력: 학기 날짜 설정
 st.sidebar.markdown("# 학기 기준 설정")
 st.sidebar.write("*[창체-자율]의 회장/부회장 임기 기준")
@@ -103,8 +103,12 @@ if st.button('문장 점검'):
 st.markdown("<br><br>", unsafe_allow_html=True)
 
 st.subheader("사용방법")
+
+
 st.markdown(
     """
+    * 종합일람표 내용을 복사해서 넣으시면 아래의 내용을 점검하여 수정할 내용을 표시합니다.<br>
+    * 수정할 내용이 있는 부분을 클릭하시면 자동 복사되며 '복사되었습니다!'라고 표시됩니다.<br>
     1. 오탈자 확인<br>
     2. 부정적인 문장은 미래 가능성으로 바꿈<br>
     3. 띄어쓰기가 없거나 두 칸 띄어 쓴 곳 확인<br>
@@ -126,5 +130,6 @@ st.markdown(
                 
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("## 후원하기")
+st.markdown("### by.말랑한 거봉")
 st.write("도움이 되셨다면 후원 감사히 받겠습니다.")
 st.image("donation.jpg", width=200)
